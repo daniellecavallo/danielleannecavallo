@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import netlifyAuth from "./netlifyAuth";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { redirect } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function Login() {
 
 
     const [loggedIn, setLoggedIn] = useState(netlifyAuth.isAuthenticated)
     const [user, setUser] = useState(null)
+    const router = useRouter()
 
     useEffect(() => {
         netlifyAuth.initialize((user: any) => {
@@ -20,7 +21,7 @@ export default function Login() {
         })
 
         if (loggedIn) {
-            redirect("/home")
+           router.push("/home")
         }
     })
 
@@ -29,7 +30,7 @@ export default function Login() {
             setLoggedIn(!!user)
             setUser(user)
             netlifyAuth.closeModal()
-            redirect("/home")
+            router.push("/home")
         })
     }
 
