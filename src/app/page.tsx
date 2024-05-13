@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import netlifyAuth from "./netlifyAuth";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/Button";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
 
